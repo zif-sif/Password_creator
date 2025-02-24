@@ -48,3 +48,5 @@ if include_numbers == 'yes':
 password = ''.join(random.choices(characters, k=length))     
 
 print(f"Generated Password: {password}")
+
+
