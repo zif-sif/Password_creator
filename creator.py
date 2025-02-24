@@ -1,7 +1,3 @@
-# Ask for desired length (12 - 128)
-# Ask if you want symbols
-# Ask if want capital letters
-# Ask if want numbers
 import random
 import string
 
@@ -16,8 +12,23 @@ while True:
         print("Please enter a valid number.")
 
 while True:
-    include_special_chars = input("Include Special Characters? (yes/no)").lower()   
+    include_special_chars = input("Include Special Characters? (yes/no): ").lower()   
     if include_special_chars in ['yes', 'no']:
+        break
+    else:
+        print("Please enter 'yes' or 'no'")
+
+
+while True:
+    include_uppercase = input("Include Uppercase Letters? (yes/no): ").lower()
+    if include_uppercase in ['yes', 'no']:
+        break
+    else:
+        print("Please enter 'yes' or 'no'")
+
+while True:
+    include_numbers = input("Include Numbers? (yes/no): ").lower()
+    if include_numbers in ['yes', 'no']:
         break
     else:
         print("Please enter 'yes' or 'no'")
@@ -27,6 +38,12 @@ characters = string.ascii_lowercase
 if include_special_chars == 'yes':
     safe_special_chars = "!#$%&'()*+,-./:;<=>?@[\\]^_"
     characters += safe_special_chars
+
+if include_uppercase == 'yes':
+    characters += string.ascii_uppercase
+
+if include_numbers == 'yes':
+    characters += string.digits
 
 password = ''.join(random.choices(characters, k=length))     
 
