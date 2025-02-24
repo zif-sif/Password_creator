@@ -15,7 +15,19 @@ while True:
     except ValueError:
         print("Please enter a valid number.")
 
+while True:
+    include_special_chars = input("Include Special Characters? (yes/no)").lower()   
+    if include_special_chars in ['yes', 'no']:
+        break
+    else:
+        print("Please enter 'yes' or 'no'")
 
-password = ''.join(random.choices(string.ascii_lowercase, k=length))     
+characters = string.ascii_lowercase 
+
+if include_special_chars == 'yes':
+    safe_special_chars = "!#$%&'()*+,-./:;<=>?@[\\]^_"
+    characters += safe_special_chars
+
+password = ''.join(random.choices(characters, k=length))     
 
 print(f"Generated Password: {password}")
